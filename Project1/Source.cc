@@ -5,6 +5,7 @@
 #include <stack>
 #include <list>
 #include <map>
+#include <forward_list>
 
 
 // VARIABLES:
@@ -74,7 +75,6 @@ void iteroDeque(std::deque<int> dec) {
 	std::cout << "FORWARD: " << std::endl;
 
 	for (std::deque<int>::iterator it = dec.begin(); it != dec.end(); ++it) {
-
 		std::cout << *it << " ";
 	}
 
@@ -83,7 +83,6 @@ void iteroDeque(std::deque<int> dec) {
 	std::cout << std::endl;
 
 	for (std::deque<int>::reverse_iterator ot = dec.rbegin(); ot != dec.rend(); ++ot) {
-
 		std::cout << *ot << " ";
 	}
 
@@ -94,6 +93,9 @@ void iteroDeque(std::deque<int> dec) {
 // SI SOPORTA
 
 void iteroMap(std::map<int, int> mapita) {
+
+	// soporta iteradores bidireccionales 
+
 	std::cout << " FORWARD: " << std::endl << std::endl;
 
 	for (std::map<int, int>::iterator it = mapita.begin(); it != mapita.end(); it++) {
@@ -104,9 +106,9 @@ void iteroMap(std::map<int, int> mapita) {
 	std::cout << "BACKWARD: " << std::endl;
 	std::cout << std::endl;
 
-
-	// soporta iteradores bidireccionales 
-
+	for (std::map<int, int>::iterator it = mapita.rbegin; it != mapita.rend; it++) {//hauria de ser rbegin() i rend() pero da error
+		std::cout << it->first << " " << it->second << " ";
+	}
 }
 
 // NO SOPORTA
@@ -119,17 +121,37 @@ void iteroStack() {
 
 // SI SOPORTA
 
-void iteroList() {
+void iteroList(std::list<int> listillo) {
 
 	// soporta iteradores bidireccionales
+
+	std::cout << " FORWARD: " << std::endl << std::endl;
+
+	for (std::list<int>::iterator i = listillo.begin(); i != listillo.end(); i++){
+		std::cout << *i << std::endl;
+	}
+
+	std::cout << std::endl << std::endl;
+	std::cout << "BACKWARD: " << std::endl;
+	std::cout << std::endl;
+
+	for (std::list<int>::iterator i = listillo.rbegin; i != listillo.rend; i++){
+		std::cout << *i << std::endl;
+	}
 
 }
 
 // SI SOPORTA
 
-void iteroFlist() {
+void iteroFlist(std::forward_list<int> flist) {
 
 	// solo soporta iterador forward
+
+	std::cout << " FORWARD: " << std::endl << std::endl;
+
+	for (std::forward_list<int>::iterator i = flist.begin(); i != flist.end(); i++){
+		std::cout << *i << std::endl;
+	}
 
 }
 
@@ -154,7 +176,7 @@ void main() {
 
 	//map
 	std::cout << std::endl;
-	std::cout << " ==== MAP ====" << std::endl << std::endl;
+	std::cout << " ==== MAP ==== " << std::endl << std::endl;
 	std::map<int, int> mapa;
 	mapa[1] = { 1 };
 	mapa[2] = { 2 };
@@ -163,5 +185,19 @@ void main() {
 
 	iteroMap(mapa);
 
+
+	//list
+	std::cout << std::endl;
+	std::cout << " ==== LIST ==== " << std::endl << std::endl;
+	std::list<int> lista({1,2,3,4,5,6,7});
+
+	iteroList(lista);
+
+	//Flist
+
+	std::cout << std::endl;
+	std::cout << " ==== FORWARD LIST ==== " << std::endl << std::endl;
+	std::forward_list<int>flist({ 1,2,3,4,5,6,7 });
+	iteroFlist(flist);
 }
 
