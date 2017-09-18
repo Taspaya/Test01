@@ -166,7 +166,7 @@ void main() {
 	std::cout << " ==== VECTOR ==== " << std::endl;
 
 	iteroVector(vectoro);
-
+   /**/
 
 	std::cout << std::endl << std::endl;
 	// deque
