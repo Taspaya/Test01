@@ -106,8 +106,8 @@ void iteroMap(std::map<int, int> mapita) {
 	std::cout << "BACKWARD: " << std::endl;
 	std::cout << std::endl;
 
-	for (std::map<int, int>::iterator it = mapita.rbegin; it != mapita.rend; it++) {//hauria de ser rbegin() i rend() pero da error
-		std::cout << it->first << " " << it->second << " ";
+	for (std::map<int, int>::iterator it = mapita.begin(); it != mapita.end(); it++) {  //hauria de ser rbegin() i rend() pero da error
+		std::cout << it->second << " " << it->first << " ";
 	}
 }
 
@@ -120,6 +120,8 @@ void iteroStack() {
 }
 
 // SI SOPORTA
+
+
 
 void iteroList(std::list<int> listillo) {
 
@@ -136,7 +138,7 @@ void iteroList(std::list<int> listillo) {
 	std::cout << std::endl;
 
 	for (std::list<int>::iterator i = listillo.rbegin; i != listillo.rend; i++){
-		std::cout << *i << std::endl;
+		 std::cout << *i << std::endl;
 	}
 
 }
@@ -150,7 +152,7 @@ void iteroFlist(std::forward_list<int> flist) {
 	std::cout << " FORWARD: " << std::endl << std::endl;
 
 	for (std::forward_list<int>::iterator i = flist.begin(); i != flist.end(); i++){
-		std::cout << *i << std::endl;
+		std::cout << *i;
 	}
 
 }
@@ -172,6 +174,7 @@ void main() {
 	std::cout << " ==== DEQUE ==== " << std::endl;
 	std::deque<int>dequeu{ 0,11,12,13,14,15,16,17,18,19 };
 	iteroDeque(dequeu);
+	std::cout << std::endl;
 
 
 	//map
@@ -192,12 +195,13 @@ void main() {
 	std::list<int> lista({1,2,3,4,5,6,7});
 
 	iteroList(lista);
-
+	
 	//Flist
 
 	std::cout << std::endl;
 	std::cout << " ==== FORWARD LIST ==== " << std::endl << std::endl;
 	std::forward_list<int>flist({ 1,2,3,4,5,6,7 });
+	
 	iteroFlist(flist);
 }
 
