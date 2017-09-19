@@ -106,7 +106,7 @@ void iteroMap(std::map<int, int> mapita) {
 	std::cout << "BACKWARD: " << std::endl;
 	std::cout << std::endl;
 
-	for (std::map<int, int>::iterator it = mapita.begin(); it != mapita.end(); it++) {  //hauria de ser rbegin() i rend() pero da error
+	for (std::map<int, int>::reverse_iterator it = mapita.rbegin(); it != mapita.rend(); it++) {  //hauria de ser rbegin() i rend() pero da error
 		std::cout << it->second << " " << it->first << " ";
 	}
 }
@@ -130,17 +130,17 @@ void iteroList(std::list<int> listillo) {
 	std::cout << " FORWARD: " << std::endl << std::endl;
 
 	for (std::list<int>::iterator i = listillo.begin(); i != listillo.end(); i++){
-		std::cout << *i << std::endl;
+		std::cout << *i << " ";
 	}
 
 	std::cout << std::endl << std::endl;
 	std::cout << "BACKWARD: " << std::endl;
 	std::cout << std::endl;
 
-	for (std::list<int>::iterator i = listillo.rbegin; i != listillo.rend; i++){
-		 std::cout << *i << std::endl;
+	for (std::list<int>::reverse_iterator i = listillo.rbegin(); i != listillo.rend(); i++){
+		 std::cout << *i << " ";
 	}
-
+	std::cout << std::endl;
 }
 
 // SI SOPORTA
@@ -152,7 +152,7 @@ void iteroFlist(std::forward_list<int> flist) {
 	std::cout << " FORWARD: " << std::endl << std::endl;
 
 	for (std::forward_list<int>::iterator i = flist.begin(); i != flist.end(); i++){
-		std::cout << *i;
+		std::cout << *i << " ";
 	}
 
 }
