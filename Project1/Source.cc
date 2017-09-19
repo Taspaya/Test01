@@ -10,6 +10,32 @@
 
 // VARIABLES:
 
+using itVector = std::vector<int>::iterator; // C++11 version
+// (also)  typedef std::vector<int>::iterator itVector;  C verion
+
+using bitVector = std::vector<int>::reverse_iterator; // C++11 version
+// (also) typedef std::vector<int>::reverse_iterator bitVector;
+
+using dit = std::deque<int>::iterator; // C++11 version
+// (also) typedef std::deque<int>::iterator bitVector;
+
+using bdit = std::deque<int>::reverse_iterator; // C++11 version
+// (also) typedef std::deque<int>::reverse_iterator bdit;
+
+using itMap = std::map<int, int>::iterator; // C++11 version
+// (also) typedef std::map<int, int>::iterator itMap;
+
+using bitMap = std::map<int, int>::reverse_iterator; // C++11 version
+// (also) typedef std::map<int, int>::reverse_iterator bitMap;
+
+using itList = std::list<int>::iterator; // C++11 version
+// (also) typedef std::list<int>::iterator itList
+
+using bitList = std::list<int>::reverse_iterator; // C++11 version
+// (also) typedef std::list<int>::reverse_iterator bitList
+
+using bFlist = std::forward_list<int>::iterator; // C++11 version
+// (also) typedef std::forward_list<int>::iterator bFlist
 
 // Vamos a iterar los contenedores
 // Tipos de contenedores:
@@ -29,7 +55,7 @@ void iteroVector(std::vector<int> vec) {
 
 	std::cout << "FORWARD: " << std::endl;
 
-	for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it) {
+	for (itVector it = vec.begin(); it != vec.end(); ++it) {
 
 		std::cout << *it << " ";
 	}
@@ -41,7 +67,7 @@ void iteroVector(std::vector<int> vec) {
 	std::cout << "BACKWARD: " << std::endl;
 	std::cout << std::endl;
 
-	for (std::vector<int>::reverse_iterator ot = vec.rbegin(); ot != vec.rend(); ++ot) {
+	for (bitVector ot = vec.rbegin(); ot != vec.rend(); ++ot) {
 
 		std::cout << *ot << " ";
 	}
@@ -74,7 +100,7 @@ void iteroDeque(std::deque<int> dec) {
 
 	std::cout << "FORWARD: " << std::endl;
 
-	for (std::deque<int>::iterator it = dec.begin(); it != dec.end(); ++it) {
+	for (dit it = dec.begin(); it != dec.end(); ++it) {
 		std::cout << *it << " ";
 	}
 
@@ -82,7 +108,7 @@ void iteroDeque(std::deque<int> dec) {
 	std::cout << "BACKWARD: " << std::endl;
 	std::cout << std::endl;
 
-	for (std::deque<int>::reverse_iterator ot = dec.rbegin(); ot != dec.rend(); ++ot) {
+	for (bdit ot = dec.rbegin(); ot != dec.rend(); ++ot) {
 		std::cout << *ot << " ";
 	}
 
@@ -98,7 +124,7 @@ void iteroMap(std::map<int, int> mapita) {
 
 	std::cout << " FORWARD: " << std::endl << std::endl;
 
-	for (std::map<int, int>::iterator it = mapita.begin(); it != mapita.end(); it++) {
+	for (itMap it = mapita.begin(); it != mapita.end(); it++) {
 		std::cout << it->first << " " << it->second << " ";
 	}
 
@@ -106,7 +132,7 @@ void iteroMap(std::map<int, int> mapita) {
 	std::cout << "BACKWARD: " << std::endl;
 	std::cout << std::endl;
 
-	for (std::map<int, int>::reverse_iterator it = mapita.rbegin(); it != mapita.rend(); it++) {  //hauria de ser rbegin() i rend() pero da error
+	for (bitMap it = mapita.rbegin(); it != mapita.rend(); it++) {  
 		std::cout << it->second << " " << it->first << " ";
 	}
 }
@@ -129,7 +155,7 @@ void iteroList(std::list<int> listillo) {
 
 	std::cout << " FORWARD: " << std::endl << std::endl;
 
-	for (std::list<int>::iterator i = listillo.begin(); i != listillo.end(); i++){
+	for (itList i = listillo.begin(); i != listillo.end(); i++){
 		std::cout << *i << " ";
 	}
 
@@ -137,7 +163,7 @@ void iteroList(std::list<int> listillo) {
 	std::cout << "BACKWARD: " << std::endl;
 	std::cout << std::endl;
 
-	for (std::list<int>::reverse_iterator i = listillo.rbegin(); i != listillo.rend(); i++){
+	for (bitList i = listillo.rbegin(); i != listillo.rend(); i++){
 		 std::cout << *i << " ";
 	}
 	std::cout << std::endl;
@@ -151,7 +177,7 @@ void iteroFlist(std::forward_list<int> flist) {
 
 	std::cout << " FORWARD: " << std::endl << std::endl;
 
-	for (std::forward_list<int>::iterator i = flist.begin(); i != flist.end(); i++){
+	for (bFlist i = flist.begin(); i != flist.end(); i++){
 		std::cout << *i << " ";
 	}
 
