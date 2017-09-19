@@ -183,7 +183,7 @@ void iteroFlist(std::forward_list<int> flist) {
 
 }
 
-
+/**/
 void main() {
 
 	// vector
