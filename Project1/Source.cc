@@ -37,6 +37,9 @@ using bitList = std::list<int>::reverse_iterator; // C++11 version
 using bFlist = std::forward_list<int>::iterator; // C++11 version
 // (also) typedef std::forward_list<int>::iterator bFlist
 
+
+
+
 // Vamos a iterar los contenedores
 // Tipos de contenedores:
 // Forward Only
@@ -183,7 +186,6 @@ void iteroFlist(std::forward_list<int> flist) {
 
 }
 
-/**/
 void main() {
 
 	// vector
