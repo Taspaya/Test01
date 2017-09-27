@@ -114,7 +114,7 @@ std::priority_queue<int> pq3(pq2);									// usamos el constructor por copia
 																	// difenrete forma podemos usar una array para formarla pero no puntero ni valores diferentes como en q2
 
 																	//Constructores del Stack
-std::stack<int> s1;													// stack totalmente vacia, sin argumentos
+std::stack<int> s0;													// stack totalmente vacia, sin argumentos
 std::stack<int> s2({ 1,2,3,4,5 });									// stack inicializada con 5 valores
 std::stack<int> s3(s2);												// constructor por copia del stack
 std::stack<int> s4(d4);												// constructor por copia usando una deque;
@@ -129,7 +129,7 @@ std::map<int, int> m3(m2);											// constructor por copiastd::map<int, int> 
 
 																	// Constructores Set
 std::set<int> se1;													//set totalmente vacio, sin argumentos
-std::set<int> se2({1,2,3,4,5,6});									//constructor lista de inicializacion
+std::set<int> se2({ 1,2,3,4,5,6 });									//constructor lista de inicializacion
 std::set<int> se3(se2);												//constructor por copia
 std::set<int> se4(se2.begin(), se2.end());							//constructor usando iteradores begin y end sobre otro set
 
@@ -155,16 +155,17 @@ std::forward_list<int> flista4(flista3.begin(), flista3.end());		//usando los it
 																	//Constructores del Unordered Map
 
 std::unordered_map<int, int> un1;									//unordered map vacio
-std::unordered_map<int, int> un2({ { 1,1 }, { 2,2 }, {3,3} });		//constructor con lista de asignacion
+std::unordered_map<int, int> un2({ { 1,1 },{ 2,2 },{ 3,3 } });		//constructor con lista de asignacion
 std::unordered_map<int, int> un3(un2);								//constructor por copia
 std::unordered_map<int, int> un4(un2.begin(), un2.end());			//constructor usando begin y end
 
 																	//Constructores del Unordered Set
 
 std::unordered_set<int> unset1;										//unordered set vacio
-std::unordered_set<int> unset2({1,2,3,4,5,6,7,8});					//constructor por lista de inicializacion
+std::unordered_set<int> unset2({ 1,2,3,4,5,6,7,8 });					//constructor por lista de inicializacion
 std::unordered_set<int> unset3(unset2);								//constructor por copia
 std::unordered_set<int> unset4(unset2.begin(), unset2.end());		//constructor por copia usando begin & end
+
 
 
 
@@ -514,9 +515,9 @@ void main() {
 	//list
 	std::cout << std::endl;
 	std::cout << " ==== LIST ==== " << std::endl << std::endl;
-	std::list<int> lista({ 1,2,3,4,5,6,7 });
+	std::list<int> li({ 1,2,3,4,5,6,7 });
 
-	iteroList(lista);
+	iteroList(li);
 
 	//Flist
 
@@ -563,6 +564,8 @@ void main() {
 	setdeldesorden.insert(7);
 	setdeldesorden.insert(8);
 	iteroUnorderedSet(setdeldesorden);
+
+	
 }
 
 
