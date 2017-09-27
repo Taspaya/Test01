@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cc">
+    <ClCompile Include="Grupo6_OscarEspejoSagues_GerarArditCastells.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
