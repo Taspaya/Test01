@@ -5,7 +5,10 @@
 #include <stack>
 #include <list>
 #include <map>
+#include <unordered_map>
 #include <forward_list>
+#include <set>
+#include <unordered_set>
 
 
 // VARIABLES:
@@ -16,33 +19,54 @@ using itVector = std::vector<int>::iterator;						// C++11 version
 using bitVector = std::vector<int>::reverse_iterator;				// C++11 version
 																	// (also) typedef std::vector<int>::reverse_iterator bitVector;
 
+using citVector = std::vector<int>::const_iterator;
+using rcitVector = std::vector<int>::const_reverse_iterator;
+
 using dit = std::deque<int>::iterator;								// C++11 version
 																	// (also) typedef std::deque<int>::iterator bitVector;
 
 using bdit = std::deque<int>::reverse_iterator;						// C++11 version
 																	// (also) typedef std::deque<int>::reverse_iterator bdit;
+using cdit = std::deque<int>::const_iterator;
+using crdit = std::deque<int>::const_reverse_iterator;
 
 using itMap = std::map<int, int>::iterator;							// C++11 version
 																	// (also) typedef std::map<int, int>::iterator itMap;
 
 using bitMap = std::map<int, int>::reverse_iterator;				// C++11 version
 																	// (also) typedef std::map<int, int>::reverse_iterator bitMap;
+using cbitMap = std::map<int, int>::const_iterator;
+using crbitMap = std::map<int, int>::const_reverse_iterator;
 
 using itList = std::list<int>::iterator;							// C++11 version
 																	// (also) typedef std::list<int>::iterator itList
 
 using bitList = std::list<int>::reverse_iterator;					// C++11 version
 																	// (also) typedef std::list<int>::reverse_iterator bitList
+using citList = std::list<int>::const_iterator;
+using critList = std::list<int>::const_reverse_iterator;
 
 using bFlist = std::forward_list<int>::iterator;					// C++11 version
 																	// (also) typedef std::forward_list<int>::iterator bFlist
+using cbFlist = std::forward_list<int>::const_iterator;
 
+using bSet = std::set<int>::iterator;								// C++11 version
+																	// (also) typedef std::forward_list<int>::iterator bFlist
+using bitSet = std::set<int>::reverse_iterator;
+using cbSet = std::set<int>::const_iterator;
+using crbSet = std::set<int>::const_reverse_iterator;
+
+using bUnMap = std::unordered_map<int, int>::iterator;
+using cbUnMap = std::unordered_map<int, int>::const_iterator;
+
+using bUnSet = std::unordered_set<int>::iterator;
+using cbUnSet = std::unordered_set<int>::const_iterator;
 
 																	//
 
 																	//Constructores del vector:
 
-std::vector<int> p1;												// vector vacio
+std::vector<int> p1;												// vector vacio, sin argumentos
 std::vector<int> p2(2, 10);											// vector con 2 elementos de valor 10
 std::vector<int> p3(p2.begin(), p2.end());							// vector usando iteradores
 std::vector<int> p4(p2.crbegin(), p2.crend());						// vector usando iteradores cr
@@ -59,14 +83,13 @@ std::vector<int> p10(pun, pun + 3);									// constructor con iteradores
 
 
 																	//Constructores de Deque
-std::deque<int> d1;													// creamos una deque completamente vacia
+std::deque<int> d1;													// creamos una deque completamente vacia, sin argumentos
 std::deque<int> d2(4);												// creamos una deque con 4 espacios que se rellenaran con 0
 std::deque<int> d3(4, 10);											// 4 espacios en la deque con 10 en ellos
 std::deque<int> d4({ 1,2,3,4,5,6 });								// una deque con 6 espacios en memoria con diferentes valores
 std::deque<int> d5(d4);												// usando el constructor por copia copiamos a d4
 std::deque<int> d6(d5.begin(), d5.end());							// usando los iteradores begin i end hacemos la copia de d5
-std::deque<int> d7(d5.rbegin(), d5.rend());							// usando iteradores reverse hacemos la copia de d5 al reves
-std::deque<int> d8(d5.crbegin(), d5.crend());						// usando los iteradores cr hacemos una copia exacta de d7
+
 
 int Array2[]{ 5,6,7,8 };
 std::deque<int> d9(Array2, Array2 + sizeof(Array2) / sizeof(int));	// creamos una deque usando una array
@@ -75,7 +98,7 @@ int *pun1 = new int[3]{ 1,2,9 };
 std::deque<int> d10(pun1, pun1 + 3);								// constructor con iteradores
 
 																	//Constructores de la Queue
-std::queue<int> q1;													// queue totalmente vacia
+std::queue<int> q1;													// queue totalmente vacia, sin argumentos
 std::queue<int> q2({ 1,2,3,4,5,6 });								// queue con 6 valores diferentes
 std::queue<int> q3(q2);												// creamos la q3 con el constructor por copia
 																	// al no soportar iteradores ya no tenemos los constructores de begin,rbegin y crbegin
@@ -83,7 +106,7 @@ std::queue<int> q3(q2);												// creamos la q3 con el constructor por copia
 
 
 																	//Constructores de la Priority Queue
-std::priority_queue<int> pq1;										// priority queue totalmente vacia
+std::priority_queue<int> pq1;										// priority queue totalmente vacia, sin argumentos
 int Array3[]{ 5,6,7,8 };
 std::priority_queue<int> pq2(Array3, Array3 + 4);					// priority queue usando una array de 4 posiciones
 std::priority_queue<int> pq3(pq2);									// usamos el constructor por copia
@@ -91,7 +114,7 @@ std::priority_queue<int> pq3(pq2);									// usamos el constructor por copia
 																	// difenrete forma podemos usar una array para formarla pero no puntero ni valores diferentes como en q2
 
 																	//Constructores del Stack
-std::stack<int> s1;													// stack totalmente vacia
+std::stack<int> s1;													// stack totalmente vacia, sin argumentos
 std::stack<int> s2({ 1,2,3,4,5 });									// stack inicializada con 5 valores
 std::stack<int> s3(s2);												// constructor por copia del stack
 std::stack<int> s4(d4);												// constructor por copia usando una deque;
@@ -99,9 +122,16 @@ std::stack<int> s4(d4);												// constructor por copia usando una deque;
 
 
 																	// Constructores Map
+std::map<int, int> m1;												// map totalmente vacio, sin argumentos
+std::map<int, int> m2(m1.begin(), m1.end());                        // constructor del mapa usando iteradores begin y end
+std::map<int, int> m3(m2);											// constructor por copiastd::map<int, int> m4(m1.rbegin(), m1.rend());						// constructor usando los iteradores rbegin y rend
 
 
 																	// Constructores Set
+std::set<int> se1;													//set totalmente vacio, sin argumentos
+std::set<int> se2({1,2,3,4,5,6});									//constructor lista de inicializacion
+std::set<int> se3(se2);												//constructor por copia
+std::set<int> se4(se2.begin(), se2.end());							//constructor usando iteradores begin y end sobre otro set
 
 																	// Constructores List
 
@@ -111,8 +141,6 @@ std::list<int> lista1({ 1,2,3,4,5 });								// List inicializada con 5 valores
 std::list<int> lista2(4, 10);										// 4 espacios en la deque con 10 en ellos
 std::list<int> lista3({ lista1 });									// List inicializada por copia de lista1
 std::list<int> lista4(lista3.begin(), lista3.end());				// Usando los iteradores begin i end hacemos la copia de lista3
-std::list<int> lista5(lista4.rbegin(), lista4.rend());				// Usando iteradores reverse hacemos la copia de lista4 al reves
-std::list<int> lista6(lista5.crbegin(), lista5.crend());			// Usando los iteradores cr hacemos una copia exacta de d7
 
 
 																	// Constructores FList
@@ -123,6 +151,20 @@ std::forward_list<int> flista1({ 1,2,3,4,5 });						// List inicializada con 5 v
 std::forward_list<int> flista2(4, 10);								// 4 espacios en la deque con 10 en ellos
 std::forward_list<int> flista3({ flista2 });						// List inicializada por copia de flista1
 std::forward_list<int> flista4(flista3.begin(), flista3.end());		//usando los iteradores begin i end hacemos la copia de flista3
+
+																	//Constructores del Unordered Map
+
+std::unordered_map<int, int> un1;									//unordered map vacio
+std::unordered_map<int, int> un2({ { 1,1 }, { 2,2 }, {3,3} });		//constructor con lista de asignacion
+std::unordered_map<int, int> un3(un2);								//constructor por copia
+std::unordered_map<int, int> un4(un2.begin(), un2.end());			//constructor usando begin y end
+
+																	//Constructores del Unordered Set
+
+std::unordered_set<int> unset1;										//unordered set vacio
+std::unordered_set<int> unset2({1,2,3,4,5,6,7,8});					//constructor por lista de inicializacion
+std::unordered_set<int> unset3(unset2);								//constructor por copia
+std::unordered_set<int> unset4(unset2.begin(), unset2.end());		//constructor por copia usando begin & end
 
 
 
@@ -143,22 +185,49 @@ void iteroVector(std::vector<int> vec) {
 	// itearador forward
 
 	std::cout << "FORWARD: " << std::endl;
+	std::cout << std::endl;
 
 	for (itVector it = vec.begin(); it != vec.end(); ++it) {
 
 		std::cout << *it << " ";
 	}
 
-	std::cout << std::endl << std::endl;
-
 	// iterador backward 
-
+	std::cout << std::endl;
 	std::cout << "BACKWARD: " << std::endl;
 	std::cout << std::endl;
 
 	for (bitVector ot = vec.rbegin(); ot != vec.rend(); ++ot) {
 
 		std::cout << *ot << " ";
+	}
+
+	std::cout << std::endl;
+	std::cout << "CFORWARD: " << std::endl;
+	std::cout << std::endl;
+
+	for (citVector it = vec.cbegin(); it != vec.cend(); ++it) {
+
+		std::cout << *it << " ";
+	}
+
+	std::cout << std::endl;
+	std::cout << "CBACKWARD: " << std::endl;
+	std::cout << std::endl;
+
+	for (rcitVector it = vec.crbegin(); it != vec.crend(); ++it) {
+
+		std::cout << *it << " ";
+	}
+
+	//iterador []
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << "[i]: " << std::endl;
+	std::cout << std::endl;
+
+	for (int i = 0; i < vec.size(); i++){
+		std::cout << vec[i] << " ";
 	}
 
 
@@ -201,6 +270,31 @@ void iteroDeque(std::deque<int> dec) {
 		std::cout << *ot << " ";
 	}
 
+	std::cout << std::endl << std::endl;
+	std::cout << "CFORWARD: " << std::endl;
+	std::cout << std::endl;
+
+	for (cdit  ot = dec.cbegin(); ot != dec.cend(); ++ot) {
+		std::cout << *ot << " ";
+	}
+
+	std::cout << std::endl << std::endl;
+	std::cout << "CBACKWARD: " << std::endl;
+	std::cout << std::endl;
+
+	for (crdit ot = dec.crbegin(); ot != dec.crend(); ++ot) {
+		std::cout << *ot << " ";
+	}
+
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << "[i]: " << std::endl;
+	std::cout << std::endl;
+
+	for (int i = 0; i < dec.size(); i++) {
+		std::cout << dec[i] << " ";
+	}
+
 
 }
 
@@ -224,6 +318,24 @@ void iteroMap(std::map<int, int> mapita) {
 	for (bitMap it = mapita.rbegin(); it != mapita.rend(); it++) {
 		std::cout << it->second << " " << it->first << " ";
 	}
+
+	std::cout << std::endl << std::endl;
+	std::cout << "CFORWARD: " << std::endl;
+	std::cout << std::endl;
+
+	for (cbitMap it = mapita.cbegin(); it != mapita.cend(); it++) {
+		std::cout << it->second << " " << it->first << " ";
+	}
+
+	std::cout << std::endl << std::endl;
+	std::cout << "CBACKWARD: " << std::endl;
+	std::cout << std::endl;
+
+	for (crbitMap it = mapita.crbegin(); it != mapita.crend(); it++) {
+		std::cout << it->second << " " << it->first << " ";
+	}
+	std::cout << std::endl;
+
 }
 
 // NO SOPORTA
@@ -255,6 +367,24 @@ void iteroList(std::list<int> listillo) {
 	for (bitList i = listillo.rbegin(); i != listillo.rend(); i++) {
 		std::cout << *i << " ";
 	}
+
+
+	std::cout << std::endl << std::endl;
+	std::cout << "CFORWARD: " << std::endl;
+	std::cout << std::endl;
+
+	for (citList i = listillo.cbegin(); i != listillo.cend(); i++){
+		std::cout << *i << " ";
+	}
+
+	std::cout << std::endl << std::endl;
+	std::cout << "CBACKWARD: " << std::endl;
+	std::cout << std::endl;
+
+	for (critList i = listillo.crbegin(); i != listillo.crend(); i++) {
+		std::cout << *i << " ";
+	}
+
 	std::cout << std::endl;
 }
 
@@ -270,6 +400,84 @@ void iteroFlist(std::forward_list<int> flist) {
 		std::cout << *i << " ";
 	}
 
+	std::cout << std::endl;
+	std::cout << "CFORWARD: " << std::endl;
+	std::cout << std::endl;
+
+	for (cbFlist i = flist.cbegin(); i != flist.cend(); i++){
+		std::cout << *i << " ";
+	}
+	std::cout << std::endl;
+
+}
+
+void iteroSet(std::set<int> seti) {
+
+	std::cout << "FORWARD: " << std::endl << std::endl;
+
+	for (bSet i = seti.begin(); i != seti.end(); i++) {
+		std::cout << *i << " ";
+	}
+
+	std::cout << std::endl << std::endl;
+	std::cout << "BACKWARD: " << std::endl;
+	std::cout << std::endl;
+
+	for (bitSet i = seti.rbegin(); i != seti.rend(); i++) {
+		std::cout << *i << " ";
+	}
+
+	std::cout << std::endl << std::endl;
+	std::cout << "CFORWARD: " << std::endl;
+	std::cout << std::endl;
+
+	for (cbSet i = seti.cbegin(); i != seti.cend(); i++){
+		std::cout << *i << " ";
+	}
+
+	std::cout << std::endl << std::endl;
+	std::cout << "CBACKWARD: " << std::endl;
+	std::cout << std::endl;
+
+	for (crbSet i = seti.crbegin(); i != seti.crend(); i++) {
+		std::cout << *i << " ";
+	}
+	std::cout << std::endl;
+
+}
+
+void iteroUnorderedMap(std::unordered_map<int, int> mapdes) {
+	
+	std::cout << "FORWARD: " << std::endl << std::endl;
+
+	for (bUnMap i = mapdes.begin(); i != mapdes.end(); i++) {
+		std::cout << i->first << " " << i->second << " ";
+	}
+
+	std::cout << std::endl << std::endl;
+	std::cout << "CFORWARD: " << std::endl;
+	std::cout << std::endl;
+
+	for (cbUnMap i = mapdes.cbegin(); i != mapdes.cend(); i++) {
+		std::cout << i->first << " " << i->second << " ";
+	}
+	std::cout << std::endl;
+}
+
+void iteroUnorderedSet(std::unordered_set<int> setdesordenao) {
+	std::cout << "FORWARD: " << std::endl << std::endl;
+
+	for (bUnSet i = setdesordenao.begin(); i != setdesordenao.end(); i++) {
+		std::cout << *i << " ";
+	}
+
+	std::cout << std::endl << std::endl;
+	std::cout << "CFORWARD: " << std::endl;
+	std::cout << std::endl;
+
+	for (cbUnSet i = setdesordenao.cbegin(); i != setdesordenao.cend(); i++) {
+		std::cout << *i << " ";
+	}
 }
 
 void main() {
@@ -281,7 +489,6 @@ void main() {
 	std::cout << " ==== VECTOR ==== " << std::endl;
 
 	iteroVector(vectoro);
-
 
 	std::cout << std::endl << std::endl;
 	// deque
@@ -319,7 +526,43 @@ void main() {
 
 	iteroFlist(flist);
 
+	//Set
+	std::cout << std::endl;
+	std::cout << " ==== SET ==== " << std::endl << std::endl;
+	std::set<int>s1;
+	s1.insert(1);
+	s1.insert(2);
+	s1.insert(3);
+	s1.insert(4);
+	s1.insert(5);
+	s1.insert(6);
+	iteroSet(s1);
 
+	//unordered_map
+	std::cout << std::endl;
+	std::cout << " ==== UNORDERED MAP ==== " << std::endl << std::endl;
+	std::unordered_map<int, int> mapnoorden;
+	mapnoorden[1] = 1;
+	mapnoorden[2] = 2;
+	mapnoorden[3] = 3;
+	mapnoorden[4] = 4;
+	mapnoorden[5] = 5;
+	mapnoorden[6] = 6;
+	iteroUnorderedMap(mapnoorden);
+
+	//unordered_set
+	std::cout << std::endl;
+	std::cout << " ==== UNORDERED SET ==== " << std::endl << std::endl;
+	std::unordered_set<int> setdeldesorden;
+	setdeldesorden.insert(1);
+	setdeldesorden.insert(2);
+	setdeldesorden.insert(3);
+	setdeldesorden.insert(4);
+	setdeldesorden.insert(5);
+	setdeldesorden.insert(6);
+	setdeldesorden.insert(7);
+	setdeldesorden.insert(8);
+	iteroUnorderedSet(setdeldesorden);
 }
 
 
